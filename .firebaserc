@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "test-f6dc6": {
+      "hosting": {
+        "firstAidAdmin": [
+          "test-f6dc6"
+        ]
+      }
+    }
+  }
+}
