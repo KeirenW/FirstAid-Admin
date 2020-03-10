@@ -1,0 +1,17 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer > div {
+    padding-top: 10px;
+}
+
+.footer-desc {
+    background-color: #f5f5f5;
+}
+
+.footer-dev {
+    background-color: #c4c4c4 !important;
+}
