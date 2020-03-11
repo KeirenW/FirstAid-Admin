@@ -1,5 +1,7 @@
-<ul>
-    <li *ngFor="let user of users | async">
-        {{user.firstName}} {{user.surname}}
-    </li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let user of users | async">
+            <app-user-card [user]="user"></app-user-card>    
+        </div>
+    </div>
+</div>
