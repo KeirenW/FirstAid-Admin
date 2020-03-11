@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // for debugging only
+      { enableTracing: false } // for debugging only
     )
   ],
   providers: [],
