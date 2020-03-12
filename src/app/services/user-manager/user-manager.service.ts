@@ -5,7 +5,15 @@ import { IUser } from 'src/app/interfaces/IUser/iuser';
   providedIn: 'root'
 })
 export class UserManagerService {
-  public user: IUser;
+  private user: IUser;
 
   constructor() { }
+
+  public setUser(user) {
+    this.user = user;
+  }
+
+  public getUser() {
+    return this.user;
+  }
 }
