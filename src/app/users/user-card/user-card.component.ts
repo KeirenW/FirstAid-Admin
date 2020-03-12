@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IUser } from 'src/app/interfaces/IUser/iuser';
+import { UserManagerService } from 'src/app/services/user-manager/user-manager.service';
 
 @Component({
   selector: 'app-user-card',
@@ -10,12 +11,13 @@ export class UserCardComponent implements OnInit {
   @Input() user: IUser;
   public selectedUser: IUser;
 
-  constructor() { }
+  constructor(private userManager: UserManagerService) { }
 
   ngOnInit(): void {
   }
 
   editUser(user) {
-    return null;
+    this.userManager.setUser(user);
+    // Navigate to user view
   }
 }
