@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 
 import { environment } from 'src/environments/environment';
 import { UserCardComponent } from './users/user-card/user-card.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     HomeComponent,
     DispatchComponent,
     UsersComponent,
-    UserCardComponent
+    UserCardComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
