@@ -1,7 +1,13 @@
 <div class="card">
-    <img src="" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title">{{user.firstName}} {{user.surname}}</h5>
+    <a href="#" class="stretched-link"></a>
+    <h5 class="card-header">{{user.firstName}} {{user.surname}}</h5>
+    <!-- <div class="card-body">
         <p class="card-text">{{user.email}}</p>
-    </div>
+    </div> -->
+    <ul class="list-group">
+        <li class="list-group-item"><small class="text-muted">UUID</small><br>{{user.uuid}}</li>
+        <li class="list-group-item"><small class="text-muted">EMAIL</small><br>{{user.email}}</li>
+        <li class="list-group-item"><small class="text-muted">LONGITUDE</small><br>{{user.lastLng}}</li>
+        <li class="list-group-item"><small class="text-muted">LATITUDE</small><br>{{user.lastLat}}</li>
+    </ul>
 </div>
