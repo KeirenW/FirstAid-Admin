@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IUser } from 'src/app/interfaces/IUser/iuser';
 
 @Component({
   selector: 'app-user-card',
@@ -7,19 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserCardComponent implements OnInit {
   @Input() user: IUser;
+  public selectedUser: IUser;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-}
-
-interface IUser {
-  email: string;
-  firstName: string;
-  surname: string;
-  uuid: string;
-  lastLng: string;
-  lastLat: string;
+  editUser(user) {
+    return null;
+  }
 }
