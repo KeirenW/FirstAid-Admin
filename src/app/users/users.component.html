@@ -1,7 +1,9 @@
 <div class="container">
+    <h1>Users Overview</h1>
+    <hr>
     <div class="row">
-        <div class="col-md-3" *ngFor="let user of users | async">
-            <app-user-card [user]="user"></app-user-card>    
+        <div class="card-columns">
+            <app-user-card *ngFor="let user of users | async" [user]="user"></app-user-card>    
         </div>
     </div>
 </div>
