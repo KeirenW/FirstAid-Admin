@@ -11,8 +11,9 @@ import 'firebase/firestore';
 })
 export class UsersComponent implements OnInit {
   users: Observable<any[]>;
+  searchTerm: string;
 
-  constructor(firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore) {
     this.users = firestore.collection('users').valueChanges();
   }
 
