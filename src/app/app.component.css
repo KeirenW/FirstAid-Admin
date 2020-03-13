@@ -2,12 +2,6 @@ nav {
     margin-bottom: 1em;
 }
 
-footer {
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-}
-
 footer > div > .row {
     padding-top: 10px;
 }
