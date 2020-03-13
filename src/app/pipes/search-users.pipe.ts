@@ -5,8 +5,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchUsersPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
-  }
+  transform(values: any[], filter: string): any[] {
+    if (!values || !values.length) { return []; }
+    if (!filter) { return values; }
+
+    return values.filter(v => {
+        let match = false;
+
+        Object.keys(v).forEach(k => {
+            if (typeof v[k] === 'string') {
+                match = match || v[k].toLowerCase().indexOf(filter.toLowerCase()) >= 0;
+            } else {
+                match = match || v[k].toLowerCase() == filter.toLowerCase(); // == intentinally
+            }
+        });
+
+        return match;
+    });
+}
 
 }
