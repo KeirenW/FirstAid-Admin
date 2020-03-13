@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { switchMap, reduce } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import { IUser } from 'src/app/interfaces/IUser/iuser';
@@ -18,7 +18,12 @@ export class EditUserComponent implements OnInit {
   public mapData: any;
   public updatedDetails: FormGroup;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, private formBuilder: FormBuilder) {
+  constructor(
+    private route: ActivatedRoute,
+    private firestore: AngularFirestore,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
     this.mapData = {
       type: 'roadmap',
       lat: null,
@@ -59,5 +64,11 @@ export class EditUserComponent implements OnInit {
 
   onSubmit(value) {
     this.firestore.collection('users').doc(this.formData.uuid).update(value);
+  }
+
+  deleteUser() {
+    this.firestore.collection('users').doc(this.formData.uuid).delete();
+    alert('User deleted');
+    this.router.navigateByUrl('/users');
   }
 }
