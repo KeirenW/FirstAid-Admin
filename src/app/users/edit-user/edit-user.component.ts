@@ -57,4 +57,7 @@ export class EditUserComponent implements OnInit {
     });
   }
 
+  onSubmit(value) {
+    this.firestore.collection('users').doc(this.formData.uuid).update(value);
+  }
 }
