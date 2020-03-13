@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -38,7 +39,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // for debugging only
-    )
+    ),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAnRrS4cTyy_qIhqpajqwmVx1BVgzKIr4g'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
