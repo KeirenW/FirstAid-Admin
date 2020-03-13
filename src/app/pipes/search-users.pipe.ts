@@ -16,6 +16,7 @@ export class SearchUsersPipe implements PipeTransform {
             if (typeof v[k] === 'string') {
                 match = match || v[k].toLowerCase().indexOf(filter.toLowerCase()) >= 0;
             } else {
+                // tslint:disable-next-line: triple-equals
                 match = match || v[k].toLowerCase() == filter.toLowerCase(); // == intentinally
             }
         });
