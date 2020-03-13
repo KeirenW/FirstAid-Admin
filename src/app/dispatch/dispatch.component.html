@@ -5,7 +5,7 @@
         <div class="col-sm-12">
             <!-- Default long and lat of map centred on campus -->
             <agm-map [zoom]="15" [longitude]="mapDefaultPos.longitude" [latitude]="mapDefaultPos.latitude">
-                
+                <agm-marker *ngFor="let location of userLocations | async" [longitude]="this.location.lastLng" [latitude]="this.location.lastLat"></agm-marker>
             </agm-map>
         </div>
     </div>
