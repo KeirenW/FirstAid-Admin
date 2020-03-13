@@ -9,7 +9,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AppComponent {
   title = 'firstAidAdmin';
 
-  constructor(private fireauth: AngularFireAuth) {}
+  constructor(private fireauth: AngularFireAuth) {
+    this.createAnonymousUser();
+  }
 
   createAnonymousUser(): Promise<any> {
     return this.fireauth.signInAnonymously();
