@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dispatch.component.css']
 })
 export class DispatchComponent implements OnInit {
+  public mapDefaultPos: object;
 
-  constructor() { }
+  constructor() {
+    this.mapDefaultPos = {
+      latitude: 56.458110,
+      longitude: -2.982118
+    };
+  }
 
   ngOnInit(): void {
   }
