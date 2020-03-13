@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, reduce } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
+import { IUser } from 'src/app/interfaces/IUser/iuser';
 
 @Component({
   selector: 'app-edit-user',
@@ -11,8 +12,8 @@ import 'firebase/firestore';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  private userUUID: string;
   private user: Observable<any>;
+  public formData: IUser;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore) {}
 
@@ -26,7 +27,16 @@ export class EditUserComponent implements OnInit {
         this.firestore.collection('users').doc(params.get('uuid')).valueChanges()
       )
     );
-    this.user.subscribe(res => console.log(res));
+    this.user.subscribe(res => {
+      this.formData = {
+        uuid: res.uuid,
+        email: res.email,
+        firstName: res.firstName,
+        surname: res.surname,
+        lastLat: res.lastLat,
+        lastLng: res.lastLng
+      };
+    });
   }
 
 }

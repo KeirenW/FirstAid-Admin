@@ -1,1 +1,27 @@
-<p>edit-user works!</p>
+<div class="container" *ngIf="formData">
+    <h1>{{this.formData.uuid}}</h1>
+    <hr>
+    <div class="col-sm-12 col-md-6">
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <label for="fName">First Name</label>
+                    <input type="text" class="form-control" name="fName" id="fName" [value]="this.formData.firstName">
+                </div>
+                <div class="col">
+                    <label for="surname">Surname</label>
+                    <input type="text" class="form-control" name="surname" id="surname" [value]="this.formData.surname">
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div class="col">
+                    <label for="email">Email Address</label>
+                    <input type="text" name="email" id="email" class="form-control" [value]="this.formData.email" aria-describedby="helpId">
+                    <small id="helpId" class="text-muted">Email for correspondence, not used for logging in.</small>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
