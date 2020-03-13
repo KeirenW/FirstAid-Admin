@@ -14,6 +14,7 @@ import { UserCardComponent } from './users/user-card/user-card.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 import { environment } from 'src/environments/environment';
+import { SearchUsersPipe } from './pipes/search-users.pipe';
 
 
 const appRoutes: Routes = [
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     DispatchComponent,
     UsersComponent,
     UserCardComponent,
-    EditUserComponent
+    EditUserComponent,
+    SearchUsersPipe
   ],
   imports: [
     BrowserModule,
