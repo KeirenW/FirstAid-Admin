@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { switchMap, reduce } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -15,8 +16,9 @@ export class EditUserComponent implements OnInit {
   private user: Observable<any>;
   public formData: IUser;
   public mapData: any;
+  public updatedDetails: FormGroup;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore) {
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, private formBuilder: FormBuilder) {
     this.mapData = {
       type: 'roadmap',
       lat: null,
@@ -43,6 +45,13 @@ export class EditUserComponent implements OnInit {
         lastLat: res.lastLat,
         lastLng: res.lastLng
       };
+
+      this.updatedDetails = this.formBuilder.group({
+        firstName: this.formData.firstName,
+        surname: this.formData.surname,
+        email: this.formData.email
+      });
+
       this.mapData.lat = Number(this.formData.lastLat);
       this.mapData.long = Number(this.formData.lastLng);
     });

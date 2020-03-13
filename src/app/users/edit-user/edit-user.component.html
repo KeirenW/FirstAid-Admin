@@ -3,24 +3,27 @@
     <hr>
     <div class="row">
         <div class="col-sm-12 col-md-6">
-            <form>
+            <form [formGroup]="updatedDetails" (ngSubmit)="onSubmit(updatedDetails.value)">
                 <div class="form-row">
                     <div class="col">
                         <label for="fName">First Name</label>
-                        <input type="text" class="form-control" name="fName" id="fName" [value]="this.formData.firstName">
+                        <input type="text" class="form-control" formControlName="firstName" name="fName" id="fName">
                     </div>
                     <div class="col">
                         <label for="surname">Surname</label>
-                        <input type="text" class="form-control" name="surname" id="surname" [value]="this.formData.surname">
+                        <input type="text" class="form-control" formControlName="surname" name="surname" id="surname">
                     </div>
                 </div>
         
                 <div class="form-row">
                     <div class="col">
                         <label for="email">Email Address</label>
-                        <input type="text" name="email" id="email" class="form-control" [value]="this.formData.email" aria-describedby="helpId">
+                        <input type="email" formControlName="email" name="email" id="email" class="form-control" aria-describedby="helpId">
                         <small id="helpId" class="text-muted">Email for correspondence, not used for logging in.</small>
                     </div>
+                </div>
+                <div class="form-row">
+                    <button class="btn btn-primary" type="submit">Update</button>         
                 </div>
             </form>
         </div>
@@ -29,7 +32,6 @@
             <agm-map [longitude]="this.mapData.long" [latitude]="this.mapData.lat" [mapTypeId]="this.mapData.type">
                 <agm-marker [longitude]="this.mapData.long" [latitude]="this.mapData.lat"></agm-marker>
             </agm-map>
-            
         </div>
     </div>
 </div>
