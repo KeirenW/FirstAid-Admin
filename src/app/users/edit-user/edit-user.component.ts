@@ -14,8 +14,15 @@ import { IUser } from 'src/app/interfaces/IUser/iuser';
 export class EditUserComponent implements OnInit {
   private user: Observable<any>;
   public formData: IUser;
+  public mapData: any;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore) {}
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore) {
+    this.mapData = {
+      type: 'roadmap',
+      lat: null,
+      long: null
+    };
+  }
 
   ngOnInit(): void {
     /**
@@ -36,6 +43,8 @@ export class EditUserComponent implements OnInit {
         lastLat: res.lastLat,
         lastLng: res.lastLng
       };
+      this.mapData.lat = Number(this.formData.lastLat);
+      this.mapData.long = Number(this.formData.lastLng);
     });
   }
 
