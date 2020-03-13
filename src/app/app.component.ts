@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'firstAidAdmin';
+
+  constructor(private fireauth: AngularFireAuth) {
+    this.createAnonymousUser();
+  }
+
+  createAnonymousUser(): Promise<any> {
+    return this.fireauth.signInAnonymously();
+  }
 }

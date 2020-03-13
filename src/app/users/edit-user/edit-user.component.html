@@ -1,0 +1,38 @@
+<div class="container" *ngIf="formData">
+    <h1 class="text-center">{{this.formData.uuid}}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <form [formGroup]="updatedDetails" (ngSubmit)="onSubmit(updatedDetails.value)">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="fName">First Name</label>
+                        <input type="text" class="form-control" formControlName="firstName" name="fName" id="fName">
+                    </div>
+                    <div class="col">
+                        <label for="surname">Surname</label>
+                        <input type="text" class="form-control" formControlName="surname" name="surname" id="surname">
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="col">
+                        <label for="email">Email Address</label>
+                        <input type="email" formControlName="email" name="email" id="email" class="form-control" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted">Email for correspondence, not used for logging in.</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button class="btn btn-primary" type="submit">Update</button>         
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <h4 class="text-center">Last Reported Location</h4>
+            <agm-map [longitude]="this.mapData.long" [latitude]="this.mapData.lat" [mapTypeId]="this.mapData.type">
+                <agm-marker [longitude]="this.mapData.long" [latitude]="this.mapData.lat"></agm-marker>
+            </agm-map>
+        </div>
+    </div>
+</div>
+
