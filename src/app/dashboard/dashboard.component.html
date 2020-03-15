@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Dispatch</h1>
+    <h1>Dashboard</h1>
     <hr>
     <div class="row">
         <div class="col-sm-12">
@@ -8,5 +8,8 @@
                 <agm-marker *ngFor="let location of userLocations | async" [longitude]="this.location.lastLng" [latitude]="this.location.lastLat"></agm-marker>
             </agm-map>
         </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-info">Dispatch</button>
     </div>
 </div>

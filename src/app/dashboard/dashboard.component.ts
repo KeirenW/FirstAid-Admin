@@ -6,11 +6,11 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 @Component({
-  selector: 'app-dispatch',
-  templateUrl: './dispatch.component.html',
-  styleUrls: ['./dispatch.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class DispatchComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   public mapDefaultPos: any;
   public userLocations: Observable<any[]>;
 
