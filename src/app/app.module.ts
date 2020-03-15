@@ -16,6 +16,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { environment } from 'src/environments/environment';
 import { SearchUsersPipe } from './pipes/search-users.pipe';
 import { OngoingMapComponent } from './dashboard/ongoing-map/ongoing-map.component';
+import { SelectedEventComponent } from './dashboard/selected-event/selected-event.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     UserCardComponent,
     EditUserComponent,
     SearchUsersPipe,
-    OngoingMapComponent
+    OngoingMapComponent,
+    SelectedEventComponent
   ],
   imports: [
     BrowserModule,
