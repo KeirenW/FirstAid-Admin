@@ -1,12 +1,10 @@
-<div class="container">
+<div class="container-fluid">
     <h1>Dashboard</h1>
     <hr>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 col-md-6">
             <!-- Default long and lat of map centred on campus -->
-            <agm-map [zoom]="15" [longitude]="mapDefaultPos.longitude" [latitude]="mapDefaultPos.latitude">
-                <agm-marker *ngFor="let location of userLocations | async" [longitude]="this.location.lastLng" [latitude]="this.location.lastLat"></agm-marker>
-            </agm-map>
+            <app-ongoing-map></app-ongoing-map>
         </div>
     </div>
     <div class="row">
