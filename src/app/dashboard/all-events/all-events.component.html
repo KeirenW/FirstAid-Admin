@@ -1,1 +1,11 @@
-<p>all-events works!</p>
+<div class="card">
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let event of events | async" class="list-group-item" (click)="changeEvent(event.UUID)">
+            {{event.Caller}}
+            <span class="float-right">
+                <small class="text-muted float-left">{{event.Timestamp.seconds | date:"short"}}</small>
+                <span class="badge badge-success ml-2">{{event.Status}}</span>
+            </span>
+        </li>
+    </ul>
+</div>
