@@ -11,13 +11,14 @@ import 'firebase/firestore';
   styleUrls: ['./ongoing-map.component.css']
 })
 export class OngoingMapComponent implements OnInit {
-  public mapDefaultPos: any;
+  public mapDefaults: any;
   public userLocations: Observable<any[]>;
 
   constructor(private firestore: AngularFirestore, private userManager: UserManagerService) {
-    this.mapDefaultPos = {
+    this.mapDefaults = {
       latitude: 56.458110,
-      longitude: -2.982118
+      longitude: -2.982118,
+      type: 'satellite'
     };
 
     if (!firebase.auth().currentUser) {
