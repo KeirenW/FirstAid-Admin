@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { SearchUsersPipe } from './pipes/search-users.pipe';
 import { OngoingMapComponent } from './dashboard/ongoing-map/ongoing-map.component';
 import { SelectedEventComponent } from './dashboard/selected-event/selected-event.component';
+import { AllEventsComponent } from './dashboard/all-events/all-events.component';
 
 
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     EditUserComponent,
     SearchUsersPipe,
     OngoingMapComponent,
-    SelectedEventComponent
+    SelectedEventComponent,
+    AllEventsComponent
   ],
   imports: [
     BrowserModule,
