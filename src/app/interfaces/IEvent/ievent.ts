@@ -10,4 +10,5 @@ export interface IEvent {
     Status: EventStatus;
     UUID: string;
     Victim: Victim;
+    Responder: string;
 }
