@@ -21,10 +21,10 @@ export class OngoingMapComponent implements OnInit {
       type: 'satellite'
     };
 
-    if (!firebase.auth().currentUser) {
-      userManager.createAnonymousUser();
-    }
-    this.userLocations = firestore.collection('users').valueChanges();
+    // if (!firebase.auth().currentUser) {
+    //   userManager.createAnonymousUser();
+    // }
+    // this.userLocations = firestore.collection('users').valueChanges();
   }
 
   ngOnInit(): void {
