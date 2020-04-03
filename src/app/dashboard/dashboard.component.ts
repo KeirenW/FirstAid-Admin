@@ -51,7 +51,6 @@ export class DashboardComponent implements OnInit {
       timestamp: firebase.firestore.Timestamp.now().toDate(),
       victimName: '',
       victimAge: 0,
-      victimSex: '',
       victimGender: ''
     });
   }

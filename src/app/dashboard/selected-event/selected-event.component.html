@@ -1,1 +1,64 @@
-<p *ngIf="event">{{event.Caller}}</p>
+<div class="container-fluid selected-event" *ngIf="event">
+    <h2 class="text-center">Selected Event</h2><hr>
+
+    <form *ngIf="event" id="eventForm" [formGroup]="eventForm" (ngSubmit)="onUpdateDetails(eventForm.value)">
+        <h5 class="text-center">Victim details</h5>
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+                    <small class="form-text text-muted">Victim name</small>
+                    <input type="text" class="form-control" id="victimName" placeholder="Victim name" formControlName="victimName" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col-6">
+                    <small class="form-text text-muted">Victim gender</small>
+                    <select id="sex" class="form-control" formControlName="victimGender" required>
+                        <option value="" selected>Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <small class="form-text text-muted">Victim age</small>
+                    <input type="number" class="form-control" id="victimAge" placeholder="Age" formControlName="victimAge" required>
+                </div>
+            </div>
+        </div><hr>
+
+        <h5 class="text-center">Event details</h5>
+        <div class="form-group">
+            <small class="form-text text-muted">Caller name</small>
+            <input type="text" class="form-control" id="caller" placeholder="Caller's name" formControlName="caller" required>
+        </div>
+        <div class="form-group">
+            <small class="form-text text-muted">Call Location</small>
+            <input type="text" class="form-control" id="location" placeholder="Location" formControlName="location" required>
+        </div>
+        <div class="form-group">
+            <small class="form-text text-muted">Summary</small>
+            <textarea class="form-control" id="description" placeholder="Description" formControlName="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mx-auto">Update</button>
+            </div>
+        </div><hr>
+    </form>
+
+    <h5 class="text-center" *ngIf="event">Status</h5>
+    <div class="text-center">
+        <div class="btn-group" role="group" *ngIf="event"> <!-- Make work plox -->
+            <button type="button" (click)="updateStatus('New')" [ngClass]="{'btn-danger': event.Status == 'New', 'btn-outline-danger': event.Status !== 'New'}" class="btn">New</button>
+            <button type="button" (click)="updateStatus('OnGoing')" [ngClass]="{'btn-warning': event.Status == 'OnGoing', 'btn-outline-warning': event.Status !== 'OnGoing'}" class="btn">Ongoing</button>
+            <button type="button" (click)="updateStatus('Completed')" [ngClass]="{'btn-success': event.Status == 'Closed', 'btn-outline-success': event.Status !== 'Closed'}" class="btn">Closed</button>
+        </div>
+    </div>
+
+    <hr><h5 class="text-center">Responder</h5>
+    
+</div>

@@ -1,0 +1,9 @@
+.borderRight {
+    height: 75vh;
+}
+
+.borderLeft {
+    border-left: 1px solid grey;
+    height: 75vh;
+    overflow-y: scroll;
+}
