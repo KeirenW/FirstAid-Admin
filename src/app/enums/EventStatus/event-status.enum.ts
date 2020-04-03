@@ -1,5 +1,5 @@
 export enum EventStatus {
     New = 'New',
-    OnGoing = 'onGoing',
-    Completed = 'Completed'
+    OnGoing = 'OnGoing',
+    Closed = 'Closed'
 }
