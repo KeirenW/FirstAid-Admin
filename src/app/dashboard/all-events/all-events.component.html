@@ -4,7 +4,9 @@
             {{event.Caller}}
             <span class="float-right">
                 <small class="text-muted float-left">{{event.Timestamp.seconds | date:"short"}}</small>
-                <span class="badge badge-success ml-2">{{event.Status}}</span>
+                <span *ngIf="event.Status == 'New'" class="badge badge-danger ml-2">{{event.Status}}</span>
+                <span *ngIf="event.Status == 'OnGoing'" class="badge badge-warning ml-2">{{event.Status}}</span>
+                <span *ngIf="event.Status == 'Closed'" class="badge badge-success ml-2">{{event.Status}}</span>
             </span>
         </li>
     </ul>
