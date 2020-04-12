@@ -11,4 +11,5 @@ export interface IEvent {
     UUID: string;
     Victim: Victim;
     Responder: string;
+    Severity: string;
 }

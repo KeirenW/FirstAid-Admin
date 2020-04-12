@@ -35,7 +35,8 @@ export class DashboardComponent implements OnInit {
         Name: null,
         Sex: null
       },
-      Responder: null
+      Responder: null,
+      Severity: null
     };
 
     this.formErrors = {
@@ -71,7 +72,8 @@ export class DashboardComponent implements OnInit {
         Age: value.victimAge,
         Sex: value.victimGender
       },
-      Responder: ''
+      Responder: '',
+      Severity: 'Mild'
     };
 
     if (this.inputValidation()) {

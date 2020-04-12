@@ -1,3 +1,15 @@
 .selected-event {
     overflow-y: scroll;
 }
+
+.card-header {
+    border-bottom: 2px solid white !important;
+}
+
+.border-none {
+    border: none;
+}
+
+.border-radius-0 {
+    border-radius: 0;
+}

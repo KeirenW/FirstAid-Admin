@@ -57,7 +57,8 @@ export class SelectedEventComponent implements OnInit {
         Name: doc.Victim.Name,
         Age: doc.Victim.Age,
         Sex: doc.Victim.Sex
-      }
+      },
+      Severity: doc.Severity
     };
   }
 
@@ -87,6 +88,11 @@ export class SelectedEventComponent implements OnInit {
 
   updateStatus(value) {
     this.event.Status = value;
+    this.firestore.collection('events').doc(this.event.UUID).update(this.event);
+  }
+
+  updateSeverity(value) {
+    this.event.Severity = value;
     this.firestore.collection('events').doc(this.event.UUID).update(this.event);
   }
 }
