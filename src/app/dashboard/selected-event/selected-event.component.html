@@ -3,7 +3,7 @@
         <div class="form-row">
             <div class="form-group col-md-5">
                 <div class="card border-none">
-                    <h5 class="text-center border-bottom border-black">Status</h5>
+                    <h5 class="text-center border-bottom border-black mb-0">Status</h5>
                     <div class="card-body p-0 m-0">
                         <div class="btn-group w-100" role="group" *ngIf="event">
                             <button type="button" (click)="updateStatus('New')" [ngClass]="{'btn-danger': event.Status == 'New', 'btn-outline-danger': event.Status !== 'New'}" class="btn border-none border-radius-0">New</button>
@@ -15,13 +15,13 @@
             </div>
             <div class="form-group col-md-7 text-right">
                 <div class="card border-none">
-                    <h5 class="text-center border-bottom border-black">Severity</h5>
+                    <h5 class="text-center border-bottom border-black mb-0">Severity</h5>
                     <div class="card-body p-0 m-0">
                         <div class="btn-group w-100" role="group" *ngIf="event"> 
                             <button type="button" (click)="updateSeverity('Mild')" [ngClass]="{'btn-info': event.Severity == 'Mild', 'btn-outline-info': event.Severity != 'Mild'}" class="btn border-none border-radius-0">Mild</button>
                             <button type="button" (click)="updateSeverity('Moderate')" [ngClass]="{'btn-primary': event.Severity == 'Moderate', 'btn-outline-primary': event.Severity != 'Moderate'}" class="btn border-none border-radius-0">Moderate</button>
                             <button type="button" (click)="updateSeverity('Severe')" [ngClass]="{'btn-warning': event.Severity == 'Severe', 'btn-outline-warning': event.Severity != 'Severe'}" class="btn border-none border-radius-0">Severe</button>
-                            <button type="button" (click)="updateSeverity('Urgent')" [ngClass]="{'btn-danger': event.Severity == 'Urgent', 'btn-outline-urgent': event.Severity != 'Urgent'}" class="btn border-none border-radius-0">Urgent</button>
+                            <button type="button" (click)="updateSeverity('Urgent')" [ngClass]="{'btn-danger': event.Severity == 'Urgent', 'btn-outline-danger': event.Severity != 'Urgent'}" class="btn border-none border-radius-0">Urgent</button>
                         </div>
                     </div>
                 </div>
