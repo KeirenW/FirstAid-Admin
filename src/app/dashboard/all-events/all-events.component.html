@@ -1,13 +1,18 @@
-<div class="card">
-    <ul class="list-group list-group-flush">
-        <li *ngFor="let event of events | async" class="list-group-item" (click)="changeEvent(event.UUID)">
-            {{event.Caller}}
-            <span class="float-right">
-                <!-- <small class="text-muted float-left">{{event.Timestamp.seconds | date:"short"}}</small> -->
-                <span *ngIf="event.Status == 'New'" class="badge badge-danger ml-2">{{event.Status}}</span>
-                <span *ngIf="event.Status == 'OnGoing'" class="badge badge-warning ml-2">{{event.Status}}</span>
-                <span *ngIf="event.Status == 'Closed'" class="badge badge-success ml-2">{{event.Status}}</span>
-            </span>
-        </li>
-    </ul>
+<div class="card" *ngFor="let event of events | async">
+    <div class="card-header p-0">
+        <div class="container-fluid pt-0 pb-0">
+            <div class="row pt-1 pb-1 pl-1">
+                <div class="col-8">
+                    {{event.Caller}}
+                </div>
+                <div class="col-4">
+                    <span class="badge" [ngClass]="{'badge-danger': event.Status == 'New', 'badge-warning': event.Status == 'OnGoing', 'badge-success': event.Status == 'Closed'}">{{event.Status}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        
+        <small>{{event.Location}}</small>
+    </div>
 </div>
