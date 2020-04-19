@@ -3,7 +3,7 @@
         <div class="form-row">
             <div class="form-group col-md-5">
                 <div class="card border-none">
-                    <h5 class="text-center border-bottom border-black mb-0">Status</h5>
+                    <h5 class="text-center border-bottom border-black pb-1">Status</h5>
                     <div class="card-body p-0 m-0">
                         <div class="btn-group w-100" role="group" *ngIf="event">
                             <button type="button" (click)="updateStatus('New')" [ngClass]="{'btn-danger': event.Status == 'New', 'btn-outline-danger': event.Status !== 'New'}" class="btn border-none border-radius-0">New</button>
@@ -15,7 +15,7 @@
             </div>
             <div class="form-group col-md-7 text-right">
                 <div class="card border-none">
-                    <h5 class="text-center border-bottom border-black mb-0">Severity</h5>
+                    <h5 class="text-center border-bottom border-black pb-1">Severity</h5>
                     <div class="card-body p-0 m-0">
                         <div class="btn-group w-100" role="group" *ngIf="event"> 
                             <button type="button" (click)="updateSeverity('Mild')" [ngClass]="{'btn-info': event.Severity == 'Mild', 'btn-outline-info': event.Severity != 'Mild'}" class="btn border-none border-radius-0">Mild</button>
