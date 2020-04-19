@@ -76,9 +76,7 @@
                 <p *ngIf="formErrors.event" class="text-danger">Error in event details!</p>
                 <p *ngIf="formErrors.victim" class="text-danger">Error in victim details!</p>
             </div>
-            <div class="modal-footer">
-                <button type="submit" (click)="createEvent(newEventForm.value)" form="eventForm" class="btn btn-success">Submit</button>
-            </div>
+            <button type="submit" (click)="createEvent(newEventForm.value)" form="eventForm" class="btn btn-success rounded-0">Submit</button>
         </div>
     </div>
 </div>
