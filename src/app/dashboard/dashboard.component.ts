@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
     event: boolean,
     victim: boolean
   };
-  public eventForm: FormGroup;
+  public newEventForm: FormGroup;
 
   constructor(private firestore: AngularFirestore, private formBuilder: FormBuilder) {
     this.newEvent = {
@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
       victim: false
     };
 
-    this.eventForm = this.formBuilder.group({
+    this.newEventForm = this.formBuilder.group({
       caller: '',
       location: '',
       description: '',
