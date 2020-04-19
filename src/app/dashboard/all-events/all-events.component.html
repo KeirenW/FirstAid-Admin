@@ -1,4 +1,4 @@
-<div class="card mb-2 pb-1" *ngFor="let event of events | async">
+<div class="card mb-2 pb-1" (click)="changeEvent(event.UUID)" *ngFor="let event of events | async">
     <div class="card-header p-0">
         <div class="container-fluid pt-0 pb-0">
             <div class="row pt-1 pb-1 pl-1">
