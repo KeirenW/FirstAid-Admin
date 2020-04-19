@@ -1,29 +1,17 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-10">
-            <h1>Dashboard</h1>
-        </div>
-        <div class="col-sm-12 col-md-2">
-            <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#newEventModal">Create Event</button>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-12 col-md-4 mv-auto">
-            <!-- Default long and lat of map centred on campus -->
+        <div class="col-4">
+            <h1>Dashboard</h1><hr>
             <app-ongoing-map></app-ongoing-map>
         </div>
-        <div class="col-sm-12 col-md-8">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-8 borderRight">
-                        <app-selected-event></app-selected-event>
-                    </div>
-                    <div class="col-sm-12 col-md-4 borderLeft">
-                        <app-all-events></app-all-events>
-                    </div>
-                </div>
-            </div>
+        <div class="col-5">
+            <app-selected-event></app-selected-event>
+        </div>
+        <div class="col-3">
+            <div class="text-center">
+                <button type="button" class="btn btn-info align-content-center" data-toggle="modal" data-target="#newEventModal">Create Event</button>
+            </div><hr>
+            <app-all-events></app-all-events>
         </div>
     </div>
 </div>
