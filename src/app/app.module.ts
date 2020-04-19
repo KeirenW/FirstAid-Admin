@@ -5,22 +5,26 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { AngularBootstrapToastsModule } from 'angular-bootstrap-toasts';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { DispatchComponent } from './dispatch/dispatch.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { UserCardComponent } from './users/user-card/user-card.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 import { environment } from 'src/environments/environment';
 import { SearchUsersPipe } from './pipes/search-users.pipe';
+import { OngoingMapComponent } from './dashboard/ongoing-map/ongoing-map.component';
+import { SelectedEventComponent } from './dashboard/selected-event/selected-event.component';
+import { AllEventsComponent } from './dashboard/all-events/all-events.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
-  { path: 'dispatch', component: DispatchComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent },
   { path: 'users/:uuid', component: EditUserComponent }
 ];
@@ -29,11 +33,14 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    DispatchComponent,
+    DashboardComponent,
     UsersComponent,
     UserCardComponent,
     EditUserComponent,
-    SearchUsersPipe
+    SearchUsersPipe,
+    OngoingMapComponent,
+    SelectedEventComponent,
+    AllEventsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +48,7 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularBootstrapToastsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // for debugging only

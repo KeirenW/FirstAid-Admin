@@ -1,0 +1,79 @@
+<div class="container-fluid selected-event" *ngIf="event">
+    <form *ngIf="event" id="eventForm" [formGroup]="eventForm" (ngSubmit)="onUpdateDetails(eventForm.value)">
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <div class="card border-none">
+                    <h5 class="text-center border-bottom border-black pb-1">Status</h5>
+                    <div class="card-body p-0 m-0">
+                        <div class="btn-group w-100" role="group" *ngIf="event">
+                            <button type="button" (click)="updateStatus('New')" [ngClass]="{'btn-danger': event.Status == 'New', 'btn-outline-danger': event.Status !== 'New'}" class="btn border-none border-radius-0">New</button>
+                            <button type="button" (click)="updateStatus('OnGoing')" [ngClass]="{'btn-warning': event.Status == 'OnGoing', 'btn-outline-warning': event.Status !== 'OnGoing'}" class="btn border-none border-radius-0">Ongoing</button>
+                            <button type="button" (click)="updateStatus('Closed')" [ngClass]="{'btn-success': event.Status == 'Closed', 'btn-outline-success': event.Status !== 'Closed'}" class="btn border-none border-radius-0">Closed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-7 text-right">
+                <div class="card border-none">
+                    <h5 class="text-center border-bottom border-black pb-1">Severity</h5>
+                    <div class="card-body p-0 m-0">
+                        <div class="btn-group w-100" role="group" *ngIf="event"> 
+                            <button type="button" (click)="updateSeverity('Mild')" [ngClass]="{'btn-info': event.Severity == 'Mild', 'btn-outline-info': event.Severity != 'Mild'}" class="btn border-none border-radius-0">Mild</button>
+                            <button type="button" (click)="updateSeverity('Moderate')" [ngClass]="{'btn-primary': event.Severity == 'Moderate', 'btn-outline-primary': event.Severity != 'Moderate'}" class="btn border-none border-radius-0">Moderate</button>
+                            <button type="button" (click)="updateSeverity('Severe')" [ngClass]="{'btn-warning': event.Severity == 'Severe', 'btn-outline-warning': event.Severity != 'Severe'}" class="btn border-none border-radius-0">Severe</button>
+                            <button type="button" (click)="updateSeverity('Urgent')" [ngClass]="{'btn-danger': event.Severity == 'Urgent', 'btn-outline-danger': event.Severity != 'Urgent'}" class="btn border-none border-radius-0">Urgent</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><hr>
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+                    <small class="form-text text-muted">Victim name</small>
+                    <input type="text" class="form-control" id="victimName" placeholder="Victim name" formControlName="victimName" required>
+                </div>
+                <div class="col">
+                    <small class="form-text text-right text-muted">Caller name</small>
+                    <input type="text" class="form-control" id="caller" placeholder="Caller's name" formControlName="caller" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col-6">
+                    <small class="form-text text-muted">Victim gender</small>
+                    <select id="sex" class="form-control" formControlName="victimGender" required>
+                        <option value="" selected>Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <small class="form-text text-muted">Victim age</small>
+                    <input type="number" class="form-control" id="victimAge" placeholder="Age" formControlName="victimAge" required>
+                </div>
+            </div>
+        </div><hr>
+
+        <h5 class="text-center">Event details</h5>
+        <div class="form-group">
+            <!-- May be able to remove this and place a draggable marker on the map -->
+            <small class="form-text text-muted">Call Location</small>
+            <input type="text" class="form-control" id="location" placeholder="Location" formControlName="location" required>
+        </div>
+        <div class="form-group">
+            <small class="form-text text-muted">Summary</small>
+            <textarea class="form-control" id="description" placeholder="Description" formControlName="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mx-auto">Update</button>
+            </div>
+        </div>
+    </form>
+    <hr><h5 class="text-center">Responder</h5>
+    
+</div>

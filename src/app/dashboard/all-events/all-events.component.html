@@ -1,0 +1,32 @@
+<div class="card mb-2 pb-1" (click)="changeEvent(event.UUID)" *ngFor="let event of events | async" [ngClass]="{'text-white bg-dark':event.Severity == 'Urgent'}">
+    <div class="card-header p-0">
+        <div class="container-fluid pt-0 pb-0">
+            <div class="row pt-1 pb-1 pl-1">
+                <div class="col-8">
+                    {{event.Caller}}
+                </div>
+                <div class="col-4">
+                    <span class="badge float-right" [ngClass]="{'badge-danger': event.Status == 'New', 'badge-warning': event.Status == 'OnGoing', 'badge-success': event.Status == 'Closed'}">{{event.Status}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1">
+                    <img src="/assets/location-pin.png" width="20" height="20">
+                </div>
+                <div class="col-11">
+                    <small>{{event.Location}}</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <small><strong>Description: </strong></small>
+                    <small>{{event.Description.slice(0, 100)}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
