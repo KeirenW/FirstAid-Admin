@@ -1,4 +1,4 @@
-<div class="card" *ngFor="let event of events | async">
+<div class="card mb-2 pb-1" *ngFor="let event of events | async">
     <div class="card-header p-0">
         <div class="container-fluid pt-0 pb-0">
             <div class="row pt-1 pb-1 pl-1">
@@ -12,7 +12,15 @@
         </div>
     </div>
     <div class="card-body p-0">
-        
-        <small>{{event.Location}}</small>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1">
+                    <img src="/assets/location-pin.png" width="20" height="20">
+                </div>
+                <div class="col-11">
+                    <small>{{event.Location}}</small>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
