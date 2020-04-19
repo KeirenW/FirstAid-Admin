@@ -6,6 +6,7 @@ import 'firebase/firestore';
 import { IEvent } from 'src/app/interfaces/IEvent/ievent';
 import { EventService } from 'src/app/services/event/event.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { AngularBootstrapToastsService } from 'angular-bootstrap-toasts';
 
 @Component({
   selector: 'app-selected-event',
@@ -17,7 +18,12 @@ export class SelectedEventComponent implements OnInit {
   public event: IEvent;
   public eventForm: FormGroup;
 
-  constructor(private firestore: AngularFirestore, private eventService: EventService, private formBuilder: FormBuilder) {
+  constructor(
+    private firestore: AngularFirestore,
+    private eventService: EventService,
+    private formBuilder: FormBuilder,
+    private toast: AngularBootstrapToastsService
+    ) {
     this.eventIdentifier = null;
     this.eventForm = this.formBuilder.group({
       caller: '',
@@ -83,7 +89,12 @@ export class SelectedEventComponent implements OnInit {
     this.event.Caller = event.caller;
 
     this.firestore.collection('events').doc(this.event.UUID).update(this.event);
-    alert('Event updated!');
+    this.toast.showSimpleToast({
+      title: 'Event updated',
+      text: `Event for caller ${this.event.Caller} has been updated.`,
+      duration: 3000,
+      showProgressLine: true
+    });
   }
 
   updateStatus(value) {

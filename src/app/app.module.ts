@@ -5,6 +5,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { AngularBootstrapToastsModule } from 'angular-bootstrap-toasts';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularBootstrapToastsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // for debugging only
