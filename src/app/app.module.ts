@@ -19,6 +19,7 @@ import { SearchUsersPipe } from './pipes/search-users.pipe';
 import { OngoingMapComponent } from './dashboard/ongoing-map/ongoing-map.component';
 import { SelectedEventComponent } from './dashboard/selected-event/selected-event.component';
 import { AllEventsComponent } from './dashboard/all-events/all-events.component';
+import { AssignResponderComponent } from './dashboard/selected-event/assign-responder/assign-responder.component';
 
 
 const appRoutes: Routes = [
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     SearchUsersPipe,
     OngoingMapComponent,
     SelectedEventComponent,
-    AllEventsComponent
+    AllEventsComponent,
+    AssignResponderComponent
   ],
   imports: [
     BrowserModule,
