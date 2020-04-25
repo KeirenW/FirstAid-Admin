@@ -14,10 +14,10 @@ export class SearchUsersPipe implements PipeTransform {
 
         Object.keys(v).forEach(k => {
             if (typeof v[k] === 'string') {
-                match = match || v[k].toLowerCase().indexOf(filter.toLowerCase()) >= 0;
+                match = match || v[k].toString().toLowerCase().indexOf(filter.toLowerCase()) >= 0;
             } else {
                 // tslint:disable-next-line: triple-equals
-                match = match || v[k].toLowerCase() == filter.toLowerCase(); // == intentinally
+                match = match || v[k].toString().toLowerCase() == filter.toLowerCase(); // == intentinally
             }
         });
 
