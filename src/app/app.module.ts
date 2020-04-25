@@ -22,7 +22,7 @@ import { AllEventsComponent } from './dashboard/all-events/all-events.component'
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent },
