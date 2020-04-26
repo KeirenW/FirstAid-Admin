@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
@@ -17,12 +17,14 @@ export class SelectedEventComponent implements OnInit {
   public eventIdentifier: Observable<any>;
   public event: IEvent;
   public eventForm: FormGroup;
+  public searchTerm: string;
+  public activeUsers: Observable<any>;
 
   constructor(
-    private firestore: AngularFirestore,
-    private eventService: EventService,
-    private formBuilder: FormBuilder,
-    private toast: AngularBootstrapToastsService
+      private firestore: AngularFirestore,
+      private eventService: EventService,
+      private formBuilder: FormBuilder,
+      private toast: AngularBootstrapToastsService
     ) {
     this.eventIdentifier = null;
     this.eventForm = this.formBuilder.group({
@@ -48,6 +50,7 @@ export class SelectedEventComponent implements OnInit {
         });
       }
     });
+    this.getActiveUserList();
   }
 
   updateEvent(doc) {
@@ -105,5 +108,10 @@ export class SelectedEventComponent implements OnInit {
   updateSeverity(value) {
     this.event.Severity = value;
     this.firestore.collection('events').doc(this.event.UUID).update(this.event);
+  }
+
+  getActiveUserList() {
+    console.log('refreshUserList() called');
+    this.activeUsers = this.firestore.collection('users', user => user.where('active', '==', true)).valueChanges();
   }
 }

@@ -1,0 +1,17 @@
+input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.list-group {
+    margin-bottom: 1em;
+}
+
+.list-group-item:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.list-group-item:first-child {
+    border-radius: 0;
+}

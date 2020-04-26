@@ -1,1 +1,19 @@
-<p>assign-responder works!</p>
+<!-- Search for active user -->
+<input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search for a specific user">
+
+<ul class="list-group" *ngIf="distancesCalculated; else loading">
+    <li class="list-group-item" *ngFor="let user of usersWithDistance | searchUsers: searchTerm">
+        <span class="float-left">{{user.firstName}} {{user.surname}}</span>
+        <small class="float-right">{{user.distanceText}}</small>
+    </li>
+</ul>
+
+<ng-template #loading>
+    <div class="text-center mt-2">
+        <div class="spinner-grow" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</ng-template>
+
+<!-- <button (click)="logValue()">LOG VALUE</button> -->
