@@ -20,7 +20,6 @@ export class SelectedEventComponent implements OnInit {
   public event: IEvent;
   public eventForm: FormGroup;
   public searchTerm: string;
-  public activeUsers: Observable<any>;
 
   constructor(
       private firestore: AngularFirestore,
@@ -40,19 +39,14 @@ export class SelectedEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.selectedEvent.subscribe(res => {
+    this.eventService.subscribeToEvent().subscribe(res => {
       if (res !== '') {
-        console.log('Getting event...');
-        this.eventIdentifier = this.firestore.collection('events').doc(res).valueChanges();
-
-        this.eventIdentifier.subscribe(doc => {
-          this.updateEvent(doc);
+        this.firestore.collection('events').doc(res).valueChanges().subscribe(event => {
+          this.updateEvent(event);
           this.updateForm();
-          console.log(this.event);
         });
       }
     });
-    this.getActiveUserList();
   }
 
   updateEvent(doc) {
@@ -111,10 +105,5 @@ export class SelectedEventComponent implements OnInit {
   updateSeverity(value) {
     this.event.Severity = value;
     this.firestore.collection('events').doc(this.event.UUID).update(this.event);
-  }
-
-  getActiveUserList() {
-    console.log('refreshUserList() called');
-    this.activeUsers = this.firestore.collection('users', user => user.where('active', '==', true)).valueChanges();
   }
 }

@@ -15,7 +15,6 @@ export class AllEventsComponent implements OnInit {
 
   constructor(private firestore: AngularFirestore, private eventService: EventService) {
     this.events = this.firestore.collection('events', event => event.where('Status', 'in', ['OnGoing', 'New'])).valueChanges();
-    this.events.subscribe(res => console.log(res));
   }
 
   ngOnInit(): void {

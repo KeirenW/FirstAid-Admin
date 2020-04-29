@@ -13,4 +13,8 @@ export class EventService {
   setCurrentEvent(value: string) {
     this.event.next(value);
   }
+
+  subscribeToEvent() {
+    return this.event;
+  }
 }

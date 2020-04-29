@@ -1,9 +1,9 @@
 <!-- Search for active user -->
 <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search for a specific user">
 
-<ul class="list-group" *ngIf="distancesCalculated; else loading">
-    <li class="list-group-item" *ngFor="let user of usersWithDistance | searchUsers: searchTerm" (click)="assignUser(user)">
-        <span class="float-left">{{user.firstName}} {{user.surname}}</span>
+<ul class="list-group" *ngIf="activeUsers.usersOutput.length > 0; else loading">
+    <li class="list-group-item" *ngFor="let user of activeUsers.usersOutput | searchUsers: searchTerm" (click)="assignUser(user)">
+        <span class="float-left">{{user.name}}</span>
         <small class="float-right">{{user.distanceText}}</small>
     </li>
 </ul>
