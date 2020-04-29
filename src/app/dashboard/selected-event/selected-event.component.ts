@@ -98,7 +98,8 @@ export class SelectedEventComponent implements OnInit {
       title: 'Event updated',
       text: `Event for caller ${this.event.Caller} has been updated.`,
       duration: 3000,
-      showProgressLine: true
+      showProgressLine: true,
+      closeByClick: true
     });
   }
 
