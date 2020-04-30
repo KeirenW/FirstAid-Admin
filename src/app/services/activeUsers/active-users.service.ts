@@ -49,7 +49,8 @@ export class ActiveUsersService {
           this.usersOutput.push({
             name: `${user.firstName} ${user.surname}`,
             distanceValue: details.rows[0].elements[0].distance.value,
-            distanceText: details.rows[0].elements[0].distance.text
+            distanceText: details.rows[0].elements[0].distance.text,
+            uuid: user.uuid
           });
           console.log(this.usersOutput);
           // Sort by distance (ascending)
@@ -61,5 +62,9 @@ export class ActiveUsersService {
         });
       });
     }
+  }
+
+  getCurrentEvent() {
+    return this.currentEvent;
   }
 }
