@@ -7,8 +7,8 @@
     <ul class="list-group">
         <li class="list-group-item"><small class="text-muted">UUID</small><br>{{user.uuid}}</li>
         <li class="list-group-item"><small class="text-muted">EMAIL</small><br>{{user.email}}</li>
-        <li class="list-group-item"><small class="text-muted">LONGITUDE</small><br>{{user.lastLng}}</li>
-        <li class="list-group-item"><small class="text-muted">LATITUDE</small><br>{{user.lastLat}}</li>
+        <li class="list-group-item"><small class="text-muted">NAME</small><br>{{user.firstName}} {{user.surname}}</li>
+        <li class="list-group-item"><small class="text-muted">ACTIVE</small><br><span *ngIf="user.active">Yes</span><span *ngIf="!user.active">No</span></li>
     </ul>
     <div class="card-footer bg-info text-white text-center">
         Edit
