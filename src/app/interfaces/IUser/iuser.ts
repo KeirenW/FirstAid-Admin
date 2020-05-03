@@ -5,4 +5,5 @@ export interface IUser {
     uuid: string;
     lastLng: string;
     lastLat: string;
+    active?: boolean;
 }

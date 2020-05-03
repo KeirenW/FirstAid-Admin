@@ -48,7 +48,8 @@ export class EditUserComponent implements OnInit {
         firstName: res.firstName,
         surname: res.surname,
         lastLat: res.lastLat,
-        lastLng: res.lastLng
+        lastLng: res.lastLng,
+        active: res.active
       };
 
       this.updatedDetails = this.formBuilder.group({

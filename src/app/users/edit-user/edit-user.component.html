@@ -2,7 +2,7 @@
     <h1 class="text-center">{{this.formData.uuid}}</h1>
     <hr>
     <div class="row">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 offset-md-3 col-md-6">
             <form [formGroup]="updatedDetails" (ngSubmit)="onSubmit(updatedDetails.value)">
                 <div class="form-row">
                     <div class="col">
@@ -21,7 +21,16 @@
                         <input type="email" formControlName="email" name="email" id="email" class="form-control" aria-describedby="helpId">
                         <small id="helpId" class="text-muted">Email for correspondence, not used for logging in.</small>
                     </div>
-                </div>
+                </div><hr>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="Active" [checked]="formData.active">
+                            <label class="custom-control-label" for="Active" value="true">User is active?</label>
+                          </div>
+                        <small id="helpId" class="text-muted">Active status must be updated only by the user</small>
+                    </div>
+                </div><hr>
                 <div class="form-row">
                     <div class="col">
                         <button class="btn btn-primary" type="submit">Update</button>
@@ -31,12 +40,6 @@
                     </div>
                 </div>
             </form>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <h4 class="text-center">Last Reported Location</h4>
-            <agm-map [longitude]="this.mapData.long" [latitude]="this.mapData.lat" [mapTypeId]="this.mapData.type">
-                <agm-marker [longitude]="this.mapData.long" [latitude]="this.mapData.lat"></agm-marker>
-            </agm-map>
         </div>
     </div>
 </div>
