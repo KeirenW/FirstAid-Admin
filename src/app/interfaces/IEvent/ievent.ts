@@ -12,4 +12,5 @@ export interface IEvent {
     Victim: Victim;
     Responder: string;
     Severity: string;
+    externalHelp: boolean;
 }

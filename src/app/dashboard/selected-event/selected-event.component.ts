@@ -9,6 +9,8 @@ import { IEvent } from 'src/app/interfaces/IEvent/ievent';
 import { EventService } from 'src/app/services/event/event.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AngularBootstrapToastsService } from 'angular-bootstrap-toasts';
+import { AssignResponderService } from 'src/app/services/assign-responder.service';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
   selector: 'app-selected-event',
@@ -20,13 +22,16 @@ export class SelectedEventComponent implements OnInit {
   public event: IEvent;
   public eventForm: FormGroup;
   public searchTerm: string;
+  public externalHelp: boolean;
 
   constructor(
-      private firestore: AngularFirestore,
-      private eventService: EventService,
-      private formBuilder: FormBuilder,
-      private toast: AngularBootstrapToastsService
-    ) {
+    private firestore: AngularFirestore,
+    private eventService: EventService,
+    private formBuilder: FormBuilder,
+    private toast: AngularBootstrapToastsService,
+    private assign: AssignResponderService,
+    private ffns: AngularFireFunctions
+  ) {
     this.eventIdentifier = null;
     this.eventForm = this.formBuilder.group({
       caller: '',
@@ -63,11 +68,13 @@ export class SelectedEventComponent implements OnInit {
         Age: doc.Victim.Age,
         Sex: doc.Victim.Sex
       },
-      Severity: doc.Severity
+      Severity: doc.Severity,
+      externalHelp: doc.externalHelp
     };
+    this.assign.checkAssigned(this.event.UUID);
   }
 
-  updateForm()  {
+  updateForm() {
     this.eventForm.setValue({
       caller: this.event.Caller,
       location: this.event.Location,
@@ -105,5 +112,20 @@ export class SelectedEventComponent implements OnInit {
   updateSeverity(value) {
     this.event.Severity = value;
     this.firestore.collection('events').doc(this.event.UUID).update(this.event);
+  }
+
+  sendUpdatedInfo() {
+    this.firestore.collection('events').doc(this.event.UUID).update(this.event);
+    const callable = this.ffns.httpsCallable('sendNotification');
+    callable({
+      topic: this.event.Responder,
+      title: `Details updated!`,
+      body: `Updated details have been sent for the event that you have been assigned.`
+    }).subscribe(res => {
+      this.toast.showSimpleToast({
+        title: 'Notification sent!',
+        text: 'The assigned first aider for this event has been notified of the updated details provided'
+      });
+    });
   }
 }
