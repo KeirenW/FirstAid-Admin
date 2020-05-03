@@ -1,3 +1,7 @@
+<div class="text-center">
+    <small>Events marked with a dark background have been classified as URGENT</small><hr>
+</div>
+
 <div class="card mb-2 pb-1" (click)="changeEvent(event.UUID)" *ngFor="let event of events | async" [ngClass]="{'text-white bg-dark':event.Severity == 'Urgent'}">
     <div class="card-header p-0">
         <div class="container-fluid pt-0 pb-0">
