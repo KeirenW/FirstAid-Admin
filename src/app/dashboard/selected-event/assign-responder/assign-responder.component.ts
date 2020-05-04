@@ -106,17 +106,5 @@ export class AssignResponderComponent implements OnInit {
         assignedUser.unsubscribe();
       }
     });
-    // test.ref.get().then(res => {
-    //     const user: any = res.docs;
-    //     console.log('Found user: ', res);
-    //     if (user.uuid !== undefined) {
-    //       this.firestore.collection('users').doc(user.uuid).update({
-    //         assignedEvent: {
-    //           uuid: null,
-    //           timestamp: null
-    //         }
-    //       });
-    //     }
-    //   });
   }
 }

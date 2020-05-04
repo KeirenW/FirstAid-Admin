@@ -137,7 +137,12 @@ export class SelectedEventComponent implements OnInit {
 
   closeEvent(value) {
     this.updateStatus('Closed');
-    this.firestore.collection('events').doc(this.event.UUID).update({ClosedReason: value.reason});
+    this.firestore.collection('users').doc(this.event.Responder).update({
+      assignedEvent: {
+        uuid: null
+      }
+    });
+    this.firestore.collection('events').doc(this.event.UUID).update({ClosedReason: value.reason, Responder: 0});
     this.closeModal.nativeElement.click();
   }
 }
