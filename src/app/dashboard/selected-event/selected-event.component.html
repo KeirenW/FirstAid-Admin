@@ -8,7 +8,7 @@
                         <div class="btn-group w-100" role="group" *ngIf="event">
                             <button type="button" (click)="updateStatus('New')" [ngClass]="{'btn-danger': event.Status == 'New', 'btn-outline-danger': event.Status !== 'New'}" class="btn border-none border-radius-0">New</button>
                             <button type="button" (click)="updateStatus('OnGoing')" [ngClass]="{'btn-warning': event.Status == 'OnGoing', 'btn-outline-warning': event.Status !== 'OnGoing'}" class="btn border-none border-radius-0">Ongoing</button>
-                            <button type="button" (click)="updateStatus('Closed')" [ngClass]="{'btn-success': event.Status == 'Closed', 'btn-outline-success': event.Status !== 'Closed'}" class="btn border-none border-radius-0">Closed</button>
+                            <button type="button" data-toggle="modal" data-target="#closeEventModal" [ngClass]="{'btn-success': event.Status == 'Closed', 'btn-outline-success': event.Status !== 'Closed'}" class="btn border-none border-radius-0">Closed</button>
                         </div>
                     </div>
                 </div>
@@ -97,6 +97,37 @@
                 </div><hr>
                 <div class="text-center">
                     <button type="button" class="btn btn-info" (click)="sendUpdatedInfo()">Send updated info</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="closeEventModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title">Close event</h5>
+                <button #closeModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="text-white" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="newEventForm" [formGroup]="closeEventForm">
+                    <div class="form-group">
+                        <textarea class="form-control" id="reason" placeholder="Reason for closing event" formControlName="reason" row="8" required></textarea>
+                        <label for="reason"><small>Textbox can be expanded if more space is required</small></label>
+                    </div>
+                </form>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <button #closeModal type="button" class="mb-1 btn btn-danger " data-dismiss="modal" aria-label="Close">Cancel</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" (click)="closeEvent(closeEventForm.value)" form="eventForm" class="mb-1 btn btn-success float-right ">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>

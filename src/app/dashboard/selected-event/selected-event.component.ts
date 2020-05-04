@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
@@ -18,11 +18,13 @@ import { AngularFireFunctions } from '@angular/fire/functions';
   styleUrls: ['./selected-event.component.css']
 })
 export class SelectedEventComponent implements OnInit {
+  @ViewChild('closeModal') closeModal: ElementRef;
   public eventIdentifier: Observable<any>;
   public event: IEvent;
   public eventForm: FormGroup;
   public searchTerm: string;
   public externalHelp: boolean;
+  public closeEventForm: FormGroup;
 
   constructor(
     private firestore: AngularFirestore,
@@ -40,6 +42,9 @@ export class SelectedEventComponent implements OnInit {
       victimName: '',
       victimAge: 0,
       victimGender: ''
+    });
+    this.closeEventForm = this.formBuilder.group({
+      reason: ''
     });
   }
 
@@ -128,5 +133,11 @@ export class SelectedEventComponent implements OnInit {
         text: 'The assigned first aider for this event has been notified of the updated details provided'
       });
     });
+  }
+
+  closeEvent(value) {
+    this.updateStatus('Closed');
+    this.firestore.collection('events').doc(this.event.UUID).update({ClosedReason: value.reason});
+    this.closeModal.nativeElement.click();
   }
 }

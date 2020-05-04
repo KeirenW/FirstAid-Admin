@@ -37,7 +37,8 @@ export class DashboardComponent implements OnInit {
       },
       Responder: null,
       Severity: null,
-      externalHelp: false
+      externalHelp: false,
+      AssignmentState: null
     };
 
     this.formErrors = {
@@ -75,7 +76,8 @@ export class DashboardComponent implements OnInit {
       },
       Responder: '',
       Severity: 'Mild',
-      externalHelp: false
+      externalHelp: false,
+      AssignmentState: null
     };
 
     if (this.inputValidation()) {
