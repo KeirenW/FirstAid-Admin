@@ -1,4 +1,4 @@
-<ng-container *ngIf="selectedEvent.Responder == ''; else assigned">
+<ng-container *ngIf="selectedEvent.AssignmentState == null; else assigned">
     <!-- Search for active user -->
     <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search for a specific user">
 
@@ -20,9 +20,31 @@
 </ng-template>
 
 <ng-template #assigned>
-    <div class="text-center mt-2">
-        <p>Assigned Responder: {{assigned}}</p>
+    <div class="container-fluid" *ngIf="this.selectedEvent.AssignmentState == 1">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <p>Awaiting response from first aider...</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <button class="btn btn-warning" (click)="reAssign()">Re-assign</button><br>
+                    <small>Click to re-assign this event to another first aider</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" *ngIf="this.selectedEvent.AssignmentState == 2">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <p>A first aider is responding to this event</p>
+            </div>
+        </div>
+    </div>
     </div>
 </ng-template>
-
-<!-- <button (click)="logValue()">LOG VALUE</button> -->

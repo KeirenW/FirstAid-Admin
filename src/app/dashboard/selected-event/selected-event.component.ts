@@ -69,7 +69,8 @@ export class SelectedEventComponent implements OnInit {
         Sex: doc.Victim.Sex
       },
       Severity: doc.Severity,
-      externalHelp: doc.externalHelp
+      externalHelp: doc.externalHelp,
+      AssignmentState: doc.AssignmentState
     };
     this.assign.checkAssigned(this.event.UUID);
   }

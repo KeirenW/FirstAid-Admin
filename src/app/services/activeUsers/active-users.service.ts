@@ -45,14 +45,12 @@ export class ActiveUsersService {
           key: 'AIzaSyAnRrS4cTyy_qIhqpajqwmVx1BVgzKIr4g'
         }).subscribe(res => {
           const details = JSON.parse(res);
-          console.log(details);
           this.usersOutput.push({
             name: `${user.firstName} ${user.surname}`,
             distanceValue: details.rows[0].elements[0].distance.value,
             distanceText: details.rows[0].elements[0].distance.text,
             uuid: user.uuid
           });
-          console.log(this.usersOutput);
           // Sort by distance (ascending)
           this.usersOutput.sort((user1, user2) => {
             if (user1.distanceValue > user2.distanceValue) { return 1; }

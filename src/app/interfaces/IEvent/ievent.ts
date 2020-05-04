@@ -13,4 +13,5 @@ export interface IEvent {
     Responder: string;
     Severity: string;
     externalHelp: boolean;
+    AssignmentState: number;
 }

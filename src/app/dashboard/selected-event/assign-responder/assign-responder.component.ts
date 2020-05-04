@@ -16,7 +16,7 @@ export class AssignResponderComponent implements OnInit {
   public usersWithDistance = [];
   public userCount = 9999;
   public distancesCalculated: boolean;
-  private timer: Observable<any>;
+  private status: boolean;
 
   constructor(
     private toast: AngularBootstrapToastsService,
@@ -25,6 +25,7 @@ export class AssignResponderComponent implements OnInit {
     private ffns: AngularFireFunctions
   ) {
     this.distancesCalculated = false;
+    this.status = null;
   }
 
   async ngOnInit() { }
@@ -66,6 +67,8 @@ export class AssignResponderComponent implements OnInit {
           }
         });
 
+        this.firestore.collection('events').doc(this.selectedEvent.UUID).update({ AssignmentState: 1 });
+
         // Send notification to assigned user
         const callable = this.ffns.httpsCallable('sendNotification');
         callable({
@@ -81,10 +84,39 @@ export class AssignResponderComponent implements OnInit {
     });
   }
 
-  // getResponderName() {
-  //   console.log('getResponderName() called');
-  //   const user: any = this.firestore.collection('users').doc(eventToAssign.Responder).get();
-  //   console.log('WTF ', `${user.firstName} ${user.surname}`);
-  //   this.assigned =  JSON.stringify(`${user.firstName} ${user.surname}`);
-  // }
+  reAssign() {
+    this.firestore.collection('events').doc(this.selectedEvent.UUID).update({
+      Responder: null,
+      AssignmentState: null
+    }
+    );
+
+    // tslint:disable-next-line: max-line-length
+    const test = this.firestore.collection('users', query => query.where('assignedEvent.uuid', '==', `${this.selectedEvent.UUID}`)).valueChanges();
+
+    const assignedUser = test.subscribe(res => {
+      const user: any = res[0];
+      if (user.uuid !== undefined) {
+        this.firestore.collection('users').doc(user.uuid).update({
+          assignedEvent: {
+            uuid: null,
+            timestamp: null
+          }
+        });
+        assignedUser.unsubscribe();
+      }
+    });
+    // test.ref.get().then(res => {
+    //     const user: any = res.docs;
+    //     console.log('Found user: ', res);
+    //     if (user.uuid !== undefined) {
+    //       this.firestore.collection('users').doc(user.uuid).update({
+    //         assignedEvent: {
+    //           uuid: null,
+    //           timestamp: null
+    //         }
+    //       });
+    //     }
+    //   });
+  }
 }

@@ -88,10 +88,7 @@
         <!-- Content row -->
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <app-assign-responder [selectedEvent]="event" *ngIf="event.Responder.length < 1 && event.Responder != 'lockout';else assigned"></app-assign-responder>
-                <ng-template #assigned>
-                    <p>First aider assigned</p>
-                </ng-template>
+                <app-assign-responder [selectedEvent]="event"></app-assign-responder>
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="custom-control custom-switch text-center">
